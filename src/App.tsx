@@ -20,8 +20,9 @@ function App(){
   const [games, setGames] = useState<Game[]>([]);
 
   useEffect(()=>{    
-    axios('https://api-findduo.herokuapp.com/games')    
+    axios('https://api-findduo.vercel.app/games')    
     .then(response=>{
+      console.log(games)
       setGames(response.data);
     })
   }, []);

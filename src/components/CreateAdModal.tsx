@@ -17,7 +17,7 @@ export function CreateAdModal(){
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
 
   useEffect(()=>{    
-    axios('https://api-findduo.herokuapp.com/games')    
+    axios('https://api-findduo.vercel.app/games')    
     .then(response=>{
       setGames(response.data);
     })
@@ -27,11 +27,12 @@ export function CreateAdModal(){
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
+    console.log(data);
     if(!data.name){
       return;
     }
     try{
-      axios.post(`https://api-findduo.herokuapp.com/games/${data.game}/ads`,{
+      axios.post(`https://api-findduo.vercel.app/games/${data.game}/ads`,{
         "name" : data.name,
         "yearsPlaying" : Number(data.yearsPlaying),
         "discord" : data.discord,
