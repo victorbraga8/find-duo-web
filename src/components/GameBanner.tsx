@@ -2,6 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { CreateAdModal } from "./CreateAdModal";
 
 interface GameBannerProps {
+  id: string;
   bannerUrl: string;
   title: string;
   adsCount: number;
@@ -24,7 +25,7 @@ export function GameBanner(props: GameBannerProps) {
             </div>
           </a>
         </Dialog.Trigger>
-        <CreateAdModal />
+        <CreateAdModal id={props.id} title={props.title} />
       </Dialog.Root>
     </div>
   );

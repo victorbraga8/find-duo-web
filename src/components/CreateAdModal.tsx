@@ -7,11 +7,11 @@ import { useEffect, useState, FormEvent } from "react";
 import axios from "axios";
 
 interface Game {
-  id: string;
-  title: string;
+  id?: string;
+  title?: string;
 }
 
-export function CreateAdModal() {
+export function CreateAdModal(props: Game) {
   const [games, setGames] = useState<Game[]>([]);
   const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState(false);
@@ -27,7 +27,7 @@ export function CreateAdModal() {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
     const data = Object.fromEntries(formData);
-    console.log(data);
+
     if (!data.name) {
       return;
     }
@@ -68,7 +68,7 @@ export function CreateAdModal() {
               Qual o game ?
             </label>
             <select
-              defaultValue={0}
+              defaultValue={props.id}
               className="bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500"
               id="game"
               name="game"

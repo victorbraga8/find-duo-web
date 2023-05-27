@@ -40,7 +40,7 @@ function App() {
         {games.map((game) => {
           return (
             <GameBanner
-              key={game.id}
+              id={game.id}
               bannerUrl={game.bannerUrl}
               adsCount={game._count.ads}
               title={game.title}
